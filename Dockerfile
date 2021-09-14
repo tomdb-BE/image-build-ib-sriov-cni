@@ -17,8 +17,6 @@ RUN make clean && make build
 
 # Create the sriov-cni image
 FROM ${UBI_IMAGE}
-RUN yum update -y && \
-    rm -rf /var/cache/yum
 WORKDIR /
 COPY --from=builder /go/ib-sriov-cni/images/entrypoint.sh /
 COPY --from=builder /go/ib-sriov-cni/build/ib-sriov-cni /usr/bin/
